@@ -6,6 +6,12 @@ import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://myflix-movies-heroku.herokuapp.com/';
+
+//get token
+const token = localStorage.getItem('token');
+//get username stored in local storage
+const username = localStorage.getItem('user');
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,9 +29,8 @@ export class FetchApiDataService {
   }
 
   // Making the api call for the user login endpoint
-  public userLogin(userCredentials: any): Observable<any> {
-    console.log(userCredentials);
-    return this.http.post(apiUrl + `users`, userCredentials).pipe(
+  public userLogin(userDetails: any): Observable<any> {
+    return this.http.post(apiUrl + 'login', userDetails).pipe(
       catchError(this.handleError)
     );
   }
@@ -60,7 +65,8 @@ export class FetchApiDataService {
 
   //Get director
   public getDirector(directorName: any): Observable<any> {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token'
+    );
     // Get username from localStorage for URLs
     const username = localStorage.getItem('Username');
     return this.http
