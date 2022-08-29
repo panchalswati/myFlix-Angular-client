@@ -10,7 +10,7 @@ const apiUrl = 'https://myflix-movies-heroku.herokuapp.com/';
   providedIn: 'root'
 })
 
-export class FetchApiDataService {
+export class UserRegistrationService {
 
   constructor(private http: HttpClient) { }
 
