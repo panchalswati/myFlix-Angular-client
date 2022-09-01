@@ -17,7 +17,24 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
+import { RouterModule, Routes } from '@angular/router';
+
 schemas: [CUSTOM_ELEMENTS_SCHEMA];
+
+import { MatIconModule } from '@angular/material/icon';
+import { DirectorViewComponent } from './director-view/director-view.component';
+import { GenreViewComponent } from './genre-view/genre-view.component';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { SynopsisComponent } from './synopsis/synopsis.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
+const appRoutes: Routes = [
+  { path: 'welcome', component: WelcomePageComponent },
+  { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfileViewComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
+];
 
 @NgModule({
   declarations: [
@@ -25,9 +42,16 @@ schemas: [CUSTOM_ELEMENTS_SCHEMA];
     UserRegistrationFormComponent,
     UserLoginFormComponent,
     MovieCardComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    DirectorViewComponent,
+    GenreViewComponent,
+    ProfileViewComponent,
+    EditProfileComponent,
+    SynopsisComponent,
+    NavbarComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -39,6 +63,7 @@ schemas: [CUSTOM_ELEMENTS_SCHEMA];
     MatDialogModule,
     MatSnackBarModule,
     FormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
