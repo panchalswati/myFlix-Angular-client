@@ -27,6 +27,10 @@ export class ProfileViewComponent implements OnInit {
     this.getFavoriteMovies();
   }
 
+  /**
+   * @function getUser
+   * opens dialog to get user information 
+   */
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
@@ -35,14 +39,20 @@ export class ProfileViewComponent implements OnInit {
     })
   }
 
-  // open edit profile dialog
+  /**
+   * @function openEditProfileDialog
+   * opens dialog to allow user to edit information
+   */
   openEditProfileDialog(): void {
     this.dialog.open(EditProfileComponent, {
       width: '300px'
     })
   }
 
-  //deleteUser
+  /**
+   * @function deleteProfile
+   * opens dialog to delete user and clear the stored user information
+   */
   deleteProfile(): void {
     if (confirm('Are you sure u want to delete your account?')) {
       this.router.navigate(['welcome']).then(() => {
@@ -57,7 +67,10 @@ export class ProfileViewComponent implements OnInit {
     }
   }
 
-  //getfavoriteMovies
+  /**
+   * @function getFavoriteMovies
+   * opens dailog to add movie to user favorite movies list
+   */
   getFavoriteMovies(): void {
     this.fetchApiData
       .getAllMovies().subscribe((response: any) => {
@@ -77,7 +90,12 @@ export class ProfileViewComponent implements OnInit {
     return remainingMovies;
   }
 
-  //remove favoriteMovies
+  /**
+   * @function removeFavoriteMovie
+   * 
+   * @param movie_id 
+   * @returns removes selected movie from user favorite movies list 
+   */
   removeFavoriteMovie(movie_id: string): void {
     this.fetchApiData
       .removeFavoriteMovie(movie_id)

@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  /**
+   * added router to route to different components
+   * @param router 
+   */
   constructor(
     public router: Router
   ) { }
@@ -15,17 +19,23 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //go to movies page
+  /**
+   * route to movies list
+   */
   goToMovies(): void {
     this.router.navigate(['movies']);
   }
 
-  //go to user profile
+  /**
+   * route to user's profile
+   */
   goToProfile(): void {
     this.router.navigate(['profile']);
   }
 
-  //logout for user
+  /**
+   * route to welcome component of the app from user's profile
+   */
   logOut(): void {
     localStorage.clear();
     this.router.navigate(['welcome']);
